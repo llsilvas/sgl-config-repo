@@ -1,0 +1,45 @@
+app:
+    label: Local Config Server Teste
+server:
+    port: 8088
+spring:
+    activemq:
+        broker-url: tcp://localhost:61616
+    application:
+        name: saog-entidades-api
+    config:
+        import: optional:configserver:http://localhost:8888/
+    data:
+        mongodb:
+            uri: mongodb://SAOG_Mongo:27017/saog-entidade
+    datasource:
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        flyway:
+            baseline-on-migrate: true
+            enabled: true
+            password: devEAP@pr0d&sp
+            table: tb_schema_version
+            url: jdbc:sqlserver://localhost:1433;database=Dbsaogentidades
+            user: sa
+        jpa:
+            hibernate:
+                ddl-auto: none
+            properties:
+                hibernate:
+                    dialect: org.hibernate.dialect.SQLServer2012Dialect
+                    implicit_naming_strategy: jpa
+                    physical_naming_strategy: br.gov.sp.prodesp.saog.intragov.api.entidades.infra.PhysicalNamingStrategy
+                    show_sql: false
+        password: devEAP@pr0d&sp
+        url: jdbc:sqlserver://localhost:1433;database=Dbsaogentidades
+        username: sa
+    h2:
+        console:
+            enabled: true
+    main:
+        log-startup-info: false
+    rabbitmq:
+        host: localhost
+        password: guest
+        port: 5672
+        username: guest
